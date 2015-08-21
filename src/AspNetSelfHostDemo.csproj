@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomContentTypeProvider.cs" />
+    <Compile Include="CustomMiddleware.cs" />
     <Compile Include="DemoController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

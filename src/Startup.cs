@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
@@ -18,8 +20,23 @@ namespace AspNetSelfHostDemo
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Adding to the pipeline with our own middleware
+            app.Use(async (context, next) =>
+            {
+                // Add Header
+                context.Response.Headers["X-Powered-By"] = "Owin Self Host";
+
+                // Call next middleware
+                await next.Invoke();
+            });
+            
+            // Custom Middleare
+            app.Use(typeof(CustomMiddleware));
+            
+            // Web Api
             app.UseWebApi(config);
 
+            // Fik
             var options = new FileServerOptions
             {
                 EnableDirectoryBrowsing = true,
