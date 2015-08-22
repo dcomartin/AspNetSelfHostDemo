@@ -24,7 +24,7 @@ namespace AspNetSelfHostDemo
             app.Use(async (context, next) =>
             {
                 // Add Header
-                context.Response.Headers["X-Powered-By"] = "Owin Self Host";
+                context.Response.Headers["Product"] = "Web Api Self Host";
 
                 // Call next middleware
                 await next.Invoke();
