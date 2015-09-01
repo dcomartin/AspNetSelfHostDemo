@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetSelfHostDemo", "AspNetSelfHostDemo.csproj", "{D2E9F373-300F-401F-8C3F-C58D57392655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetSelfHostFileServer", "AspNetSelfHostFileServer.csproj", "{D2E9F373-300F-401F-8C3F-C58D57392655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

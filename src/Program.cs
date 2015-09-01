@@ -1,17 +1,21 @@
 ﻿using System;
 using System.ServiceProcess;
-using Microsoft.Owin.Hosting;
 using Topshelf;
 
-namespace AspNetSelfHostDemo
+namespace AspNetSelfHostFileServer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //StartConsole();
-            //StartServiceBase();
-            StartTopshelf();
+            //Option to run as interactive or in the service.
+            if (Environment.UserInteractive) {
+                StartTopshelf();
+            }
+            else
+            { 
+                StartServiceBase(); 
+            }
         }
 
         static void StartTopshelf()
@@ -26,27 +30,15 @@ namespace AspNetSelfHostDemo
                 });
                 x.RunAsLocalSystem();
 
-                x.SetDescription("This is a demo of a Windows Service using Topshelf.");
-                x.SetDisplayName("Self Host Web API Demo");
-                x.SetServiceName("AspNetSelfHostDemo");
+                x.SetDescription("This is a FileServer.");
+                x.SetDisplayName("WebAPIFileServer");
+                x.SetServiceName("WebAPIFileServer");
             });
         }
-
-        static void StartConsole()
-        {
-            using (WebApp.Start<Startup>("http://localhost:8080"))
-            {
-                Console.WriteLine("Web Server is running.");
-                Console.WriteLine("Press any key to quit.");
-                Console.ReadLine();
-            }
-        }
-
         static void StartServiceBase()
         {
             ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
+            ServicesToRun = new ServiceBase[] {
                 new SelfHostServiceBase()
             };
             ServiceBase.Run(ServicesToRun);

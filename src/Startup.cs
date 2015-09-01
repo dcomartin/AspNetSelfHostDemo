@@ -6,7 +6,7 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 
-namespace AspNetSelfHostDemo
+namespace AspNetSelfHostFileServer
 {
     public class Startup
     {
@@ -42,7 +42,7 @@ namespace AspNetSelfHostDemo
                 EnableDirectoryBrowsing = true,
                 EnableDefaultFiles = true,
                 DefaultFilesOptions = { DefaultFileNames = {"index.html"}},
-                FileSystem = new PhysicalFileSystem("Assets"),
+                FileSystem = new PhysicalFileSystem(System.Configuration.ConfigurationManager.AppSettings["location"]),
                 StaticFileOptions = { ContentTypeProvider = new CustomContentTypeProvider() }
             };
 

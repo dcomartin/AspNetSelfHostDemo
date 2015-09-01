@@ -1,4 +1,4 @@
-﻿namespace AspNetSelfHostDemo
+﻿namespace AspNetSelfHostFileServer
 {
     partial class SelfHostServiceBase
     {

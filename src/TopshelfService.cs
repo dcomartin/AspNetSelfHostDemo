@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
 
-namespace AspNetSelfHostDemo
+namespace AspNetSelfHostFileServer
 {
     public class TopshelfService
     {
@@ -18,7 +18,10 @@ namespace AspNetSelfHostDemo
 
         public void Stop()
         {
-            _webapp?.Dispose();
+            if (_webapp != null)
+            {
+                _webapp.Dispose();
+            }
         }
     }
 }
