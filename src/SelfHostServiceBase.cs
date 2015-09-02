@@ -2,7 +2,7 @@
 using System.ServiceProcess;
 using Microsoft.Owin.Hosting;
 
-namespace AspNetSelfHostDemo
+namespace AspNetSelfHostFileServer
 {
     public partial class SelfHostServiceBase : ServiceBase
     {
@@ -20,7 +20,10 @@ namespace AspNetSelfHostDemo
 
         protected override void OnStop()
         {
-            _webapp?.Dispose();
+            if(_webapp !=null)
+            {
+            _webapp.Dispose();
+            }
         }
     }
 }

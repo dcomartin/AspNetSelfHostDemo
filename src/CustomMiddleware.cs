@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Owin;
 
-namespace AspNetSelfHostDemo
+namespace AspNetSelfHostFileServer
 {
     public class CustomMiddleware : OwinMiddleware
     {
