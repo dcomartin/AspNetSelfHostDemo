@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
+using Nancy;
 
 namespace AspNetSelfHostDemo
 {
@@ -36,7 +37,7 @@ namespace AspNetSelfHostDemo
             // Web Api
             app.UseWebApi(config);
 
-            // Fik
+            // File Server
             var options = new FileServerOptions
             {
                 EnableDirectoryBrowsing = true,
@@ -47,6 +48,9 @@ namespace AspNetSelfHostDemo
             };
 
             app.UseFileServer(options);
+
+            // Nancy
+            app.UseNancy();
         }
     }
 }
