@@ -9,8 +9,6 @@ namespace AspNetSelfHostDemo
     {
         static void Main(string[] args)
         {
-            //StartConsole();
-            //StartServiceBase();
             StartTopshelf();
         }
 
@@ -18,9 +16,9 @@ namespace AspNetSelfHostDemo
         {
             HostFactory.Run(x =>
             {
-                x.Service<TopshelfService>(s =>
+                x.Service<WebServer>(s =>
                 {
-                    s.ConstructUsing(name => new TopshelfService());
+                    s.ConstructUsing(name => new WebServer());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
@@ -30,26 +28,6 @@ namespace AspNetSelfHostDemo
                 x.SetDisplayName("Self Host Web API Demo");
                 x.SetServiceName("AspNetSelfHostDemo");
             });
-        }
-
-        static void StartConsole()
-        {
-            using (WebApp.Start<Startup>("http://localhost:8080"))
-            {
-                Console.WriteLine("Web Server is running.");
-                Console.WriteLine("Press any key to quit.");
-                Console.ReadLine();
-            }
-        }
-
-        static void StartServiceBase()
-        {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new SelfHostServiceBase()
-            };
-            ServiceBase.Run(ServicesToRun);
         }
     }
 }

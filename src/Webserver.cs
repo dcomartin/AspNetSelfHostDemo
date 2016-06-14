@@ -7,7 +7,7 @@ using Microsoft.Owin.Hosting;
 
 namespace AspNetSelfHostDemo
 {
-    public class TopshelfService
+    public class WebServer
     {
         private IDisposable _webapp;
 
