@@ -13,14 +13,6 @@ namespace AspNetSelfHostDemo
     {
         public void Configuration(IAppBuilder app)
         {
-            // Configure Web API for self-host. 
-            var config = new HttpConfiguration();
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
             // Adding to the pipeline with our own middleware
             app.Use(async (context, next) =>
             {
@@ -33,7 +25,15 @@ namespace AspNetSelfHostDemo
             
             // Custom Middleare
             app.Use(typeof(CustomMiddleware));
-            
+
+            // Configure Web API for self-host. 
+            var config = new HttpConfiguration();
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             // Web Api
             app.UseWebApi(config);
 
